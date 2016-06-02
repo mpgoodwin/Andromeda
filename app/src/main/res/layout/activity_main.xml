@@ -9,4 +9,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nonvoid.andromeda.MainActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MapsActivity"
+        android:id="@+id/buttonMaps"
+        android:onClick="onClick"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="170dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CreateEvent"
+        android:id="@+id/buttonCreateEvent"
+        android:onClick="onClick"
+        android:layout_above="@+id/buttonMaps"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp" />
 </RelativeLayout>
