@@ -1,5 +1,4 @@
-package com.nonvoid.andromeda.Helper;
-
+package com.nonvoid.andromeda.helper;
 
 import android.Manifest;
 import android.content.Context;
@@ -14,52 +13,26 @@ import android.os.Parcel;
 import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
 public class LocationHelper implements Serializable {
-    byte[] location;
-    double latitude, longitude;
-    String[] address;
 
-    public LocationHelper(){}
-    public LocationHelper(Location location, Context context){
-        setLocation(location, context);
-    }
+    private LocationManager locationManager;
+    private Context context;
 
-    public Location getLocation() {
-        Location targetLocation = new Location("");//provider name is unecessary
-        targetLocation.setLatitude(latitude);//your coords of course
-        targetLocation.setLongitude(longitude);
-        return targetLocation;
-    }
-
-    public void setLocation(Location location, Context context) {
-        Parcel p = Parcel.obtain();
-        location.writeToParcel(p, 0);
-        this.location = p.marshall();
-        p.recycle();
-        latitude = location.getLatitude();
-        longitude = location.getLongitude();
-        getAddressFromLocation(latitude, longitude, context);
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public String[] getAddress() {
-        return address;
+    public LocationHelper(LocationManager locationManager, Context context){
+        this.locationManager = locationManager;
+        this.context = context;
     }
 
     private void getAddressFromLocation(double latitude, double longitude, Context context){
         Geocoder geocoder = new Geocoder(context, Locale.ENGLISH);
+        String[] address;
         try {
             List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
 
@@ -80,7 +53,7 @@ public class LocationHelper implements Serializable {
 
     }
 
-    public static LocationHelper getCurrentLocation(LocationManager locationManager, Context context){
+    public LatLng getCurrentLatLng(){
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             // permission granted
 
@@ -92,7 +65,7 @@ public class LocationHelper implements Serializable {
             // Check if last known location set
             if (location != null) {
                 Toast.makeText(context, "Found stored current location!", Toast.LENGTH_LONG).show();
-                return new LocationHelper(location, context);
+                return new LatLng(location.getLatitude(), location.getLongitude());
             } else {
                 // if last location not already recorded, force location lookup
                 provider = locationManager.getBestProvider(new Criteria(), false);
@@ -100,7 +73,7 @@ public class LocationHelper implements Serializable {
                 location = locationManager.getLastKnownLocation(provider);
                 if (location != null) {
                     Toast.makeText(context, "Location current location!", Toast.LENGTH_LONG).show();
-                    //return new LocationHelper(location, context);
+                    return new LatLng(location.getLatitude(), location.getLongitude());
                 } else {
                     Toast.makeText(context, "Location Not Found", Toast.LENGTH_LONG).show();
                     //return new LocationHelper(location, context);

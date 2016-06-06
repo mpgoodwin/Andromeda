@@ -8,21 +8,24 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.nonvoid.andromeda.data.LatLon;
 import com.nonvoid.andromeda.data.Location;
 import com.nonvoid.andromeda.helper.LocationHelper;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, android.location.LocationListener, GoogleMap.OnMapClickListener{
 
     private GoogleMap mMap;
 
-    private Location curLatLon;
+    private Location currentLocation;
+    private Location clickedLocation;
+    private LocationHelper locationHelper;
+    //private LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +36,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        curLatLon =  LocationHelper.getCurrentLocation((LocationManager) getSystemService(Context.LOCATION_SERVICE), this);
+        locationHelper = new LocationHelper((LocationManager) getSystemService(Context.LOCATION_SERVICE), this);
+        getCurrentLocation();
+
     }
 
-
+    public void getCurrentLocation(){
+        currentLocation = new Location(locationHelper.getCurrentLatLng());
+    }
 
 
     /**
@@ -52,6 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         debug("mapReady: start");
         mMap = googleMap;
+        mMap.setOnMapClickListener(this);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -67,14 +75,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         debug("setMyLocation true");
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.addMarker(new MarkerOptions().position(currentLocation.center).title("Current Location"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation.center));
 
 
     }
 
     private void debug(String s){
-        Log.d(MainActivity.DEBUGSTR, "MapsActivity: " + s)
+        Log.d(MainActivity.DEBUGSTR, "MapsActivity: " + s);
+    }
+
+    @Override
+    public void onLocationChanged(android.location.Location location) {
+        currentLocation.setCenter( locationHelper.getCurrentLatLng());
+    }
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        debug("onMapClick start.");
+        clickedLocation = new Location(latLng);
+        mMap.addMarker(new MarkerOptions().position(clickedLocation.center).title("Clicked"));
     }
 }
