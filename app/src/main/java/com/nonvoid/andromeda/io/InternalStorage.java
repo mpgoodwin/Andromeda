@@ -2,6 +2,8 @@ package com.nonvoid.andromeda.io;
 
 import android.content.Context;
 
+import com.nonvoid.andromeda.data.Hint;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
