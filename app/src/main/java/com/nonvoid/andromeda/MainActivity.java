@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.nonvoid.andromeda.MVP.MapsActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final String DEBUGSTR = "DebugLog";
