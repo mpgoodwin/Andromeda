@@ -46,7 +46,9 @@
         <activity android:name=".SubmittingLocationPointsActivity" />
         <activity android:name=".HowManyHintsPerLocationActivity" />
         <activity android:name=".SubmittingAHintPerLocationActivity" />
-        <activity android:name=".MVP.ViewHintsActivity"></activity>
+        <activity android:name=".MVP.ViewHintsActivity" />
+        <activity android:name=".MVP.CreateHintActivity" />
+        <activity android:name=".MVP.CheckHintActivity"></activity>
     </application>
 
 </manifest>

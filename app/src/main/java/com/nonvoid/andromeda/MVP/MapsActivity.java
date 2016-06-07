@@ -40,7 +40,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        locationHelper = new LocationHelper((LocationManager) getSystemService(Context.LOCATION_SERVICE), this);
+        setupLocationHelper();
         getCurrentLocation();
         debug("Current Location");
         debug(currentLocation.toString());
@@ -50,6 +50,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         currentLocation = new Location(locationHelper.getCurrentLatLng());
     }
 
+    public void setupLocationHelper(){
+        locationHelper = new LocationHelper((LocationManager) getSystemService(Context.LOCATION_SERVICE), this);
+    }
 
     /**
      * Manipulates the map once available.
