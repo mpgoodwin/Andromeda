@@ -34,6 +34,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        debug("onCreate start");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -41,7 +42,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         locationHelper = new LocationHelper((LocationManager) getSystemService(Context.LOCATION_SERVICE), this);
         getCurrentLocation();
-
+        debug("Current Location");
+        debug(currentLocation.toString());
     }
 
     public void getCurrentLocation(){
@@ -90,7 +92,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onLocationChanged(android.location.Location location) {
-        currentLocation.setCenter( locationHelper.getCurrentLatLng());
+        //currentLocation.setCenter( locationHelper.getCurrentLatLng());
     }
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -108,7 +110,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapClick(LatLng latLng) {
         debug("onMapClick start.");
-        clickedLocation = new Location(latLng);
-        mMap.addMarker(new MarkerOptions().position(clickedLocation.center).title("Clicked"));
+        mMap.addMarker(new MarkerOptions().position(latLng).title("Clicked"));
     }
 }
