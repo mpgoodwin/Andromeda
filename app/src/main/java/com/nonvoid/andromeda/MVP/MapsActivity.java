@@ -95,7 +95,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onLocationChanged(android.location.Location location) {
-        //currentLocation.setCenter( locationHelper.getCurrentLatLng());
+        currentLocation.setCenter( new LatLng( location.getLatitude(), location.getLongitude() ));
     }
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {

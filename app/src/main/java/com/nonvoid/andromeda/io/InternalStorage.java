@@ -18,6 +18,15 @@ import java.util.ArrayList;
  */
 public class InternalStorage {
 
+    /*
+        To use:
+                ArrayList<Hint> hintList = InternalStorage.readHintList(this);
+
+        To Save:
+                InternalStorage.writeHintsList(this, hintsList);
+
+     */
+
     public static String HINTLISTKEY = "HINTSLIST";
 
     public static void writeObject(Context context, String key, Object object) {
