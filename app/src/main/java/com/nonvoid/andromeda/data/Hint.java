@@ -20,4 +20,5 @@ public class Hint extends Location {
     public void setText(String text) {
         this.text = text;
     }
+
 }
