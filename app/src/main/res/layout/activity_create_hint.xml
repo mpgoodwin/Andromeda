@@ -65,6 +65,7 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/buttonSaveHint"
+        android:onClick="onClick"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
