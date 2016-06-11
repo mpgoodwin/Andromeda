@@ -38,14 +38,6 @@
         <activity
             android:name=".MVP.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity
-            android:name=".CreateEventActivity"
-            android:label="@string/title_activity_create_event"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HowManyLocationsActivity" />
-        <activity android:name=".SubmittingLocationPointsActivity" />
-        <activity android:name=".HowManyHintsPerLocationActivity" />
-        <activity android:name=".SubmittingAHintPerLocationActivity" />
         <activity android:name=".MVP.ViewHintsActivity" />
         <activity android:name=".MVP.CreateHintActivity" />
         <activity android:name=".MVP.CheckHintActivity"></activity>
