@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.nonvoid.andromeda.MVP.CheckHintActivity;
 import com.nonvoid.andromeda.MVP.CreateHintActivity;
 import com.nonvoid.andromeda.MVP.MapsActivity;
 import com.nonvoid.andromeda.MVP.ViewHintsActivity;
@@ -24,12 +25,16 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View v){
         Intent i;
         switch (v.getId()){
-            case R.id.buttonMaps :
+            case R.id.buttonCreateHint :
+                i = new Intent(this, CreateHintActivity.class);
+                startActivity(i);
+                break;
+            case R.id.buttonViewHints :
                 i = new Intent(this, ViewHintsActivity.class);
                 startActivity(i);
                 break;
-            case R.id.buttonCreateEvent :
-                i = new Intent(this, CreateHintActivity.class);
+            case R.id.buttonCheckLocation :
+                i = new Intent(this, CheckHintActivity.class);
                 startActivity(i);
                 break;
         }
