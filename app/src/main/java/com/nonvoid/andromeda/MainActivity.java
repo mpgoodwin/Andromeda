@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.nonvoid.andromeda.MVP.CreateHintActivity;
 import com.nonvoid.andromeda.MVP.MapsActivity;
+import com.nonvoid.andromeda.MVP.ViewHintsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,11 +25,11 @@ public class MainActivity extends AppCompatActivity {
         Intent i;
         switch (v.getId()){
             case R.id.buttonMaps :
-                i = new Intent(this, MapsActivity.class);
+                i = new Intent(this, ViewHintsActivity.class);
                 startActivity(i);
                 break;
             case R.id.buttonCreateEvent :
-                i = new Intent(this, CreateEventActivity.class);
+                i = new Intent(this, CreateHintActivity.class);
                 startActivity(i);
                 break;
         }
