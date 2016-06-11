@@ -33,10 +33,6 @@ public class MainActivity extends AppCompatActivity {
                 i = new Intent(this, ViewHintsActivity.class);
                 startActivity(i);
                 break;
-            case R.id.buttonCheckLocation :
-                i = new Intent(this, CheckHintActivity.class);
-                startActivity(i);
-                break;
         }
     }
 
