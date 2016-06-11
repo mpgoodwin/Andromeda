@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/editTextHintText"
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
         android:layout_marginTop="40dp"
@@ -46,16 +46,25 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Pair hint with your current location:"
         android:id="@+id/textView3"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/editTextHintText"
         android:layout_alignParentStart="true"
         android:layout_marginTop="66dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Pairing"
-        android:id="@+id/button"
+        android:text="Get Current Location"
+        android:id="@+id/buttonGetLocation"
+        android:onClick="onClick"
         android:layout_marginTop="59dp"
         android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/buttonSaveHint"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
