@@ -19,13 +19,4 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="170dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CreateEvent"
-        android:id="@+id/buttonCreateEvent"
-        android:onClick="onClick"
-        android:layout_above="@+id/buttonMaps"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp" />
 </RelativeLayout>
