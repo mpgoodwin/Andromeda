@@ -93,7 +93,7 @@ public class ViewHintsActivity extends AppCompatActivity {
 
             HintDescription.setText(onehint.getDescription());
 
-            //HintLocation.setText(onehint.getLocation());
+            HintLocation.setText(onehint.getLocation().toString());
 
             // Return the completed view to render on screen
             return convertView;
