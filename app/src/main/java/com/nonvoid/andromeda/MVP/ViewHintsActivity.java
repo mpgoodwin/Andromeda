@@ -25,8 +25,6 @@ import java.util.ArrayList;
 
 public class ViewHintsActivity extends AppCompatActivity {
 
-
-
     HintListViewAdapter adapter;
 
     @Override
@@ -75,10 +73,6 @@ public class ViewHintsActivity extends AppCompatActivity {
 
         );
     }
-
-
-
-
     public class HintListViewAdapter extends ArrayAdapter<Hint> {
         public HintListViewAdapter(Context context, ArrayList<Hint> hints) {
             super(context, 0);
@@ -90,13 +84,12 @@ public class ViewHintsActivity extends AppCompatActivity {
             Hint onehint = getItem(position);
             // Check if an existing view is being reused, otherwise inflate the view
             if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_check_hint, parent, false);
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_create_hint, parent, false);
 
             }
 
-
             // Lookup view for data population
-            TextView HintDescription = (TextView) convertView.findViewById(R.id.textView6);
+            TextView HintDescription = (TextView) convertView.findViewById(R.id.editTextHintText);
             // Populate the data into the template view using the data object
 
             HintDescription.setText(onehint.getText());
