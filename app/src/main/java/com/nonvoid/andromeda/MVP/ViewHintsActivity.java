@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,6 @@ import android.widget.Toast;
 
 import com.nonvoid.andromeda.R;
 import com.nonvoid.andromeda.data.Hint;
-import com.nonvoid.andromeda.data.HintList;
-import com.nonvoid.andromeda.io.InternalStorage;
 
 import java.util.ArrayList;
 

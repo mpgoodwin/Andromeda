@@ -1,24 +1,24 @@
 package com.nonvoid.andromeda.data;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.nonvoid.andromeda.data.Location;
 
 /**
- * Created by Quinten on 6/6/2016.
+ * Created by Matt on 6/21/2016.
  */
-public class Hint extends Location {
-    String text;
+public class Hint {
+    String description;
+    LatLng location;
 
-    public Hint(LatLng center) {
-        super(center);
+    public Hint(String description, LatLng location) {
+        this.description = description;
+        this.location = location;
     }
 
-    public String getText() {
-        return text;
+    public String getDescription() {
+        return description;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public LatLng getLocation() {
+        return location;
     }
-
 }

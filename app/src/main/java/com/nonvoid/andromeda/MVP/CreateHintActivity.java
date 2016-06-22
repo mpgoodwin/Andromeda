@@ -1,11 +1,8 @@
 package com.nonvoid.andromeda.MVP;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -14,24 +11,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.vision.text.Text;
 import com.nonvoid.andromeda.MainActivity;
 import com.nonvoid.andromeda.R;
 import com.nonvoid.andromeda.data.Hint;
-import com.nonvoid.andromeda.data.HintList;
 import com.nonvoid.andromeda.helper.LocationHelper;
-import com.nonvoid.andromeda.io.InternalStorage;
-
-import java.util.ArrayList;
 
 public class CreateHintActivity extends AppCompatActivity implements LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -66,12 +56,10 @@ public class CreateHintActivity extends AppCompatActivity implements LocationLis
         Log.d(MainActivity.DEBUGSTR, "Create hint onClick method : " + ((Button) v).getText());
         switch (v.getId()) {
             case R.id.buttonGetLocation:
-                hint = new Hint( getCurrentLocation() );
+                hint = new Hint( );
                 break;
             case R.id.buttonSaveHint:
-                hint = new Hint(getCurrentLocation());
-                EditText hintText = (EditText) findViewById(R.id.editTextHintText);
-
+               Hint newHint = new Hint();
                 /*
                 Log.d(MainActivity.DEBUGSTR, text.getText().toString());
                 if (hint.center != null && text.getText().length() > 0) {
