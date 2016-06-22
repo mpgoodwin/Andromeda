@@ -22,6 +22,9 @@ import com.nonvoid.andromeda.MainActivity;
 import com.nonvoid.andromeda.R;
 import com.nonvoid.andromeda.data.Hint;
 import com.nonvoid.andromeda.helper.LocationHelper;
+import com.nonvoid.andromeda.io.InternalStorage;
+
+import java.util.ArrayList;
 
 public class CreateHintActivity extends AppCompatActivity implements LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -29,7 +32,7 @@ public class CreateHintActivity extends AppCompatActivity implements LocationLis
     Location mLastLocation;
     LocationHelper locationHelper;
     Hint hint;
-
+    TextView description;
     TextView mLatitude;
     TextView mLongitude;
 
@@ -48,6 +51,8 @@ public class CreateHintActivity extends AppCompatActivity implements LocationLis
                     .addApi(LocationServices.API)
                     .build();
         }
+
+        description = (TextView) findViewById(R.id.editTextHintText);
         mLatitude = (TextView) findViewById(R.id.textViewLatitude);
         mLongitude = (TextView) findViewById(R.id.textViewLongitude);
     }
@@ -56,10 +61,15 @@ public class CreateHintActivity extends AppCompatActivity implements LocationLis
         Log.d(MainActivity.DEBUGSTR, "Create hint onClick method : " + ((Button) v).getText());
         switch (v.getId()) {
             case R.id.buttonGetLocation:
-                hint = new Hint( );
+
                 break;
             case R.id.buttonSaveHint:
-               Hint newHint = new Hint();
+                Hint newHint = new Hint("test", null);
+                ArrayList<Hint> hintList = InternalStorage.readHintList(this);
+                hintList.add(newHint);
+                InternalStorage.writeHintsList(this, hintList);
+                Log.d(MainActivity.DEBUGSTR, "onClick: saved hintList to InternalStorage");
+                finish();
                 /*
                 Log.d(MainActivity.DEBUGSTR, text.getText().toString());
                 if (hint.center != null && text.getText().length() > 0) {

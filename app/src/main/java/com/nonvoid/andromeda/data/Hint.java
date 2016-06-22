@@ -9,8 +9,19 @@ public class Hint {
     String description;
     LatLng location;
 
+    public Hint() {
+    }
+
     public Hint(String description, LatLng location) {
         this.description = description;
+        this.location = location;
+    }
+
+    public Hint(String description) {
+        this.description = description;
+    }
+
+    public Hint(LatLng location) {
         this.location = location;
     }
 
@@ -18,7 +29,15 @@ public class Hint {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public LatLng getLocation() {
         return location;
+    }
+
+    public void setLocation(LatLng location) {
+        this.location = location;
     }
 }
