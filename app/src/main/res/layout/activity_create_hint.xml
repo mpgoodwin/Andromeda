@@ -46,9 +46,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Pair hint with your current location:"
         android:id="@+id/textView3"
-        android:layout_below="@+id/editTextHintText"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="66dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -56,8 +55,7 @@
         android:text="Get Current Location"
         android:id="@+id/buttonGetLocation"
         android:onClick="onClick"
-        android:layout_marginTop="59dp"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/textViewLongitude"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -66,6 +64,25 @@
         android:text="Save"
         android:id="@+id/buttonSaveHint"
         android:onClick="onClick"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/buttonGetLocation"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textViewLatitude"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textViewLongitude"
+        android:layout_marginTop="45dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textViewLongitude"
+        android:layout_below="@+id/textViewLatitude"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Check Your Location:"
-        android:id="@+id/textView4"
+        android:id="@+id/textViewLatitude"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:typeface="sans"
@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Hint:"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/textView4"
+        android:id="@+id/textViewLongitude"
+        android:layout_below="@+id/textViewLatitude"
         android:layout_alignParentStart="true"
         android:layout_marginTop="47dp"
         android:textStyle="bold"
@@ -38,8 +38,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="[Insert Hint Text]"
         android:id="@+id/textView6"
-        android:layout_below="@+id/textView5"
-        android:layout_toEndOf="@+id/textView5"
+        android:layout_below="@+id/textViewLongitude"
+        android:layout_toEndOf="@+id/textViewLongitude"
         android:textStyle="italic" />
 
     <TextView
@@ -64,6 +64,6 @@
         android:layout_marginBottom="87dp"
         android:layout_alignEnd="@+id/textView7"
         android:layout_marginEnd="64dp"
-        android:layout_alignStart="@+id/textView4"
+        android:layout_alignStart="@+id/textViewLatitude"
         android:layout_alignParentBottom="true" />
 </RelativeLayout>

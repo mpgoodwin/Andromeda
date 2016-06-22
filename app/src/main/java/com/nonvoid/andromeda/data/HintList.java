@@ -17,31 +17,40 @@ import java.util.ArrayList;
  *      hintList.save(this);
  *      hintList.
  */
-public class HintList extends ArrayList<Hint> {
+public class HintList {
     Context context;
+    ArrayList<Hint> hints;
     public HintList(Context context) {
         this.context = context;
-        this.addAll(InternalStorage.readHintList(context));
+
+        hints = InternalStorage.readHintList(context);
+        if (hints == null){
+            hints = new ArrayList<>();
+        }
+    }
+
+    public ArrayList<Hint> getHints() {
+        return hints;
     }
 
     public void save(){
         if(this.context != null)
-            InternalStorage.writeHintsList(this.context, this);
+            InternalStorage.writeHintsList(this.context, hints);
         else
             Log.d(MainActivity.DEBUGSTR, "HintList save failed");
     }
 
     public void update(Context context){
         if(context != null)
-            addUnique(new HintList(context));
+            addUnique(InternalStorage.readHintList(context));
     }
     
     public void addUnique(Hint h){
-        for (Hint hint : this){
+        for (Hint hint : hints){
             if(h.equals(hint))
                 return;
         }
-        this.add(h);
+        hints.add(h);
     }
     public void addUnique(ArrayList<Hint> hintList){
         for(Hint hint : hintList){
