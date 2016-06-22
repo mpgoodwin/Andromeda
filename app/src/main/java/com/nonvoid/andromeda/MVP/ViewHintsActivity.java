@@ -89,7 +89,11 @@ public class ViewHintsActivity extends AppCompatActivity {
             TextView HintDescription = (TextView) convertView.findViewById(R.id.DisplayHint);
             // Populate the data into the template view using the data object
 
-            HintDescription.setText(onehint.getText());
+            TextView HintLocation = (TextView) convertView.findViewById(R.id.DisplayLocation);
+
+            HintDescription.setText(onehint.getDescription());
+
+            //HintLocation.setText(onehint.getLocation());
 
             // Return the completed view to render on screen
             return convertView;
